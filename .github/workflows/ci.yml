@@ -2,6 +2,10 @@ name: CI
 
 on: [push, pull_request]
 
+strategy:
+  matrix:
+    python-verion: ["3.9", "3.10", "3.11"]
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -13,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-verion }}
 
       - name: Install dependencies
         run: pip install -r requirements.txt
