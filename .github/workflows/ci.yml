@@ -2,12 +2,12 @@ name: CI
 
 on: [push, pull_request]
 
-strategy:
-  matrix:
-    python-verion: ["3.9", "3.10", "3.11"]
-
 jobs:
   build-and-test:
+    strategy:
+      matrix:
+        python-verion: ["3.9", "3.10", "3.11"]
+
     runs-on: ubuntu-latest
 
     steps:
