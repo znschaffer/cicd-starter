@@ -6,7 +6,7 @@ jobs:
   build-and-test:
     strategy:
       matrix:
-        python-verion: ["3.9", "3.10", "3.11"]
+        python-version: ["3.9", "3.10", "3.11"]
 
     runs-on: ubuntu-latest
 
@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-verion }}
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -28,5 +28,5 @@ jobs:
       - name: Upload test report
         uses: actions/upload-artifact@v4
         with:
-          name: test-report
+          name: test-report-${{ matrix.python-version}}
           path: .
